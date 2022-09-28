@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjexAuth-2022", "ProjexAuth-2022\ProjexAuth-2022.csproj", "{DF822F6D-3982-4D09-9B3C-C94D32A57A44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF822F6D-3982-4D09-9B3C-C94D32A57A44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF822F6D-3982-4D09-9B3C-C94D32A57A44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF822F6D-3982-4D09-9B3C-C94D32A57A44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF822F6D-3982-4D09-9B3C-C94D32A57A44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {28386334-4FBC-402E-AE81-B02F981ADA47}
+	EndGlobalSection
+EndGlobal
