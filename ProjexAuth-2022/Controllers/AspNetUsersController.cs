@@ -11,7 +11,7 @@ using ProjexAuth_2022.Models;
 
 namespace ProjexAuth_2022.Controllers
 {
-    [Authorize(Roles = "Beheerder")]
+    [Authorize (Roles = "Beheerder")]
     public class AspNetUsersController : Controller
     {
         private readonly ProjexDbFinalContext _context;

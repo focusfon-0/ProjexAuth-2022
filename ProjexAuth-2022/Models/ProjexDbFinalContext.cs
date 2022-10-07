@@ -18,7 +18,6 @@ namespace ProjexAuth_2022.Models
 
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; } = null!;
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; } = null!;
-
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,6 +36,17 @@ namespace ProjexAuth_2022.Models
                 entity.HasKey(e => new { e.UserId, e.RoleId });
 
                 entity.HasIndex(e => e.RoleId, "IX_AspNetUserRoles_RoleId");
+            });
+
+            modelBuilder.Entity<AspNetRole>(entity =>
+            {
+                entity.HasKey(e => new { e.Id });
+
+                entity.HasIndex(e => e.Name, "IX_AspNetUserRoles_RoleId");
+
+                entity.HasIndex(e => e.NormalizedName);
+
+                entity.HasIndex(e => e.ConcurrencyStamp);
             });
 
             modelBuilder.Entity<AspNetUser>(entity =>

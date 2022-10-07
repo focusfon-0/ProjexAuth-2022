@@ -26,6 +26,7 @@ namespace ProjexAuth_2022.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Instructions()
         {
             return View();
