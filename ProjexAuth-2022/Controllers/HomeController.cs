@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using ProjexAuth_2022.Models;
 using System.Diagnostics;
 
 namespace ProjexAuth_2022.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,6 +21,7 @@ namespace ProjexAuth_2022.Controllers
             return View();
         }
 
+        [Authorize (Roles ="Eigenaar")]
         public IActionResult Privacy()
         {
             return View();
