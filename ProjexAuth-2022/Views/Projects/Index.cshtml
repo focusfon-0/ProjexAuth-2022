@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<ProjexAuth_2022.Models.Projects>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Projecten";
 }
 
-<h1>Index</h1>
+<h1>Weergave projecten:</h1>
+<p>Onderstaand staan alle beschikbare projecten weergegeven.<br />
+   De informatie uit de database wordt binnen deze weergave beperkt tot Naam, Beschrijving, Eigenaar, Beschikbaarheid en Publicatiedatum.
+</p>
 
 <p>
     <a asp-action="Create">Create New</a>

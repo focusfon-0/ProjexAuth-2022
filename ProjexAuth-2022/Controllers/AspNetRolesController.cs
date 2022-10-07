@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,86 +9,85 @@ using ProjexAuth_2022.Models;
 
 namespace ProjexAuth_2022.Controllers
 {
-    [Authorize(Roles = "Beheerder")]
-    public class AspNetUsersController : Controller
+    public class AspNetRolesController : Controller
     {
         private readonly ProjexDbFinalContext _context;
 
-        public AspNetUsersController(ProjexDbFinalContext context)
+        public AspNetRolesController(ProjexDbFinalContext context)
         {
             _context = context;
         }
 
-        // GET: AspNetUsers
+        // GET: AspNetRoles
         public async Task<IActionResult> Index()
         {
-              return View(await _context.AspNetUsers.ToListAsync());
+              return View(await _context.AspNetRoles.ToListAsync());
         }
 
-        // GET: AspNetUsers/Details/5
+        // GET: AspNetRoles/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null || _context.AspNetUsers == null)
+            if (id == null || _context.AspNetRoles == null)
             {
                 return NotFound();
             }
 
-            var aspNetUser = await _context.AspNetUsers
+            var aspNetRole = await _context.AspNetRoles
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (aspNetUser == null)
+            if (aspNetRole == null)
             {
                 return NotFound();
             }
 
-            return View(aspNetUser);
+            return View(aspNetRole);
         }
 
-        // GET: AspNetUsers/Create
+        // GET: AspNetRoles/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: AspNetUsers/Create
+        // POST: AspNetRoles/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public async Task<IActionResult> Create([Bind("Id,Name,NormalizedName,ConcurrencyStamp")] AspNetRole aspNetRole)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(aspNetUser);
+                _context.Add(aspNetRole);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(aspNetUser);
+            return View(aspNetRole);
         }
 
-        // GET: AspNetUsers/Edit/5
+        // GET: AspNetRoles/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
-            if (id == null || _context.AspNetUsers == null)
+            if (id == null || _context.AspNetRoles == null)
             {
                 return NotFound();
             }
 
-            var aspNetUser = await _context.AspNetUsers.FindAsync(id);
-            if (aspNetUser == null)
+            var aspNetRole = await _context.AspNetRoles.FindAsync(id);
+            if (aspNetRole == null)
             {
                 return NotFound();
             }
-            return View(aspNetUser);
+            return View(aspNetRole);
         }
 
-        // POST: AspNetUsers/Edit/5
+        // POST: AspNetRoles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] AspNetUser aspNetUser)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,NormalizedName,ConcurrencyStamp")] AspNetRole aspNetRole)
         {
-            if (id != aspNetUser.Id)
+            if (id != aspNetRole.Id)
             {
                 return NotFound();
             }
@@ -99,12 +96,12 @@ namespace ProjexAuth_2022.Controllers
             {
                 try
                 {
-                    _context.Update(aspNetUser);
+                    _context.Update(aspNetRole);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AspNetUserExists(aspNetUser.Id))
+                    if (!AspNetRoleExists(aspNetRole.Id))
                     {
                         return NotFound();
                     }
@@ -115,49 +112,49 @@ namespace ProjexAuth_2022.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(aspNetUser);
+            return View(aspNetRole);
         }
 
-        // GET: AspNetUsers/Delete/5
+        // GET: AspNetRoles/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
-            if (id == null || _context.AspNetUsers == null)
+            if (id == null || _context.AspNetRoles == null)
             {
                 return NotFound();
             }
 
-            var aspNetUser = await _context.AspNetUsers
+            var aspNetRole = await _context.AspNetRoles
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (aspNetUser == null)
+            if (aspNetRole == null)
             {
                 return NotFound();
             }
 
-            return View(aspNetUser);
+            return View(aspNetRole);
         }
 
-        // POST: AspNetUsers/Delete/5
+        // POST: AspNetRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            if (_context.AspNetUsers == null)
+            if (_context.AspNetRoles == null)
             {
-                return Problem("Entity set 'ProjexDbFinalContext.AspNetUsers'  is null.");
+                return Problem("Entity set 'ProjexDbFinalContext.AspNetRoles'  is null.");
             }
-            var aspNetUser = await _context.AspNetUsers.FindAsync(id);
-            if (aspNetUser != null)
+            var aspNetRole = await _context.AspNetRoles.FindAsync(id);
+            if (aspNetRole != null)
             {
-                _context.AspNetUsers.Remove(aspNetUser);
+                _context.AspNetRoles.Remove(aspNetRole);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AspNetUserExists(string id)
+        private bool AspNetRoleExists(string id)
         {
-          return _context.AspNetUsers.Any(e => e.Id == id);
+          return _context.AspNetRoles.Any(e => e.Id == id);
         }
     }
 }
