@@ -11,7 +11,6 @@ namespace ProjexAuth_2022.Data
         {
 
         }
-
         public DbSet<Projects> Projects { get; set; }
     }
 }
