@@ -21,8 +21,19 @@ namespace ProjexAuth_2022.Controllers
             return View();
         }
 
-        [Authorize (Roles ="Eigenaar")]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Instructions()
+        {
+            return View();
+        }
+
+        [Authorize (Roles = "Beheerder")]
+        public IActionResult Beheer()
         {
             return View();
         }

@@ -21,6 +21,7 @@ namespace ProjexAuth_2022.Controllers
         }
 
         // GET: Projects
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Projects.ToListAsync());
@@ -45,6 +46,7 @@ namespace ProjexAuth_2022.Controllers
         }
 
         // GET: Projects/Create
+        [Authorize (Roles="Opdrachtgever, Beheerder")]
         public IActionResult Create()
         {
             return View();
@@ -55,6 +57,7 @@ namespace ProjexAuth_2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Opdrachtgever, Beheerder")]
         public async Task<IActionResult> Create([Bind("ID,projectName,projectDescription,projectOwner,isAvailable,createdOn")] Projects projects)
         {
             if (ModelState.IsValid)
@@ -67,6 +70,7 @@ namespace ProjexAuth_2022.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "Opdrachtgever, Beheerder")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Projects == null)
@@ -87,6 +91,7 @@ namespace ProjexAuth_2022.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Opdrachtgever, Beheerder")]
         public async Task<IActionResult> Edit(int id, [Bind("ID,projectName,projectDescription,projectOwner,isAvailable,createdOn")] Projects projects)
         {
             if (id != projects.ID)
@@ -118,6 +123,7 @@ namespace ProjexAuth_2022.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Opdrachtgever, Beheerder")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Projects == null)

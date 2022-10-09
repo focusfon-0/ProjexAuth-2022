@@ -1,31 +1,38 @@
 ﻿@model IEnumerable<ProjexAuth_2022.Models.Projects>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Projecten";
 }
 
-<h1>Index</h1>
+<h1>Weergave projecten:</h1>
+<p>Onderstaand staan alle beschikbare projecten weergegeven.<br />
+   De informatie uit de database wordt binnen deze weergave beperkt tot Naam, Beschrijving, Eigenaar, Beschikbaarheid en Publicatiedatum.<br />
+   Indien u de juiste rechten heeft, kunt u ook aanmaken, bewerken en verwijderen.
+</p>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Nieuw Project aanmaken</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.projectName)
+                Projectnaam
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.projectDescription)
+                Omschrijving
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.projectOwner)
+                Projecteigenaar
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.isAvailable)
+                Beschikbaar?
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.createdOn)
+                Datum publicatie
+            </th>
+            <th>
+                Verdiensten
             </th>
             <th></th>
         </tr>
@@ -49,9 +56,12 @@
                 @Html.DisplayFor(modelItem => item.createdOn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                @Html.DisplayFor(modelItem => item.earnings)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Bewerken</a> |
                 <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Delete" asp-route-id="@item.ID">Verwijderen</a>
             </td>
         </tr>
 }

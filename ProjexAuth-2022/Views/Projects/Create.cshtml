@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Nieuw project aanmaken</h1>
 
-<h4>Projects</h4>
+<h4>Voer de vereiste gegevens in:</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,6 +36,11 @@
                 <label asp-for="createdOn" class="control-label"></label>
                 <input asp-for="createdOn" class="form-control" />
                 <span asp-validation-for="createdOn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="earnings" class="control-label"></label>
+                <input asp-for="earnings" class="form-control" />
+                <span asp-validation-for="earnings" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

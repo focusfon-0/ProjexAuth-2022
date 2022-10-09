@@ -13,5 +13,6 @@ namespace ProjexAuth_2022.Models
         public string projectOwner { get; set; } = "Voorbeeld opdrachtgever";
         public bool isAvailable { get; set; } = true;
         public DateTime createdOn { get; set; } = DateTime.Now;
+        public int earnings { get; set; }
     }
 }
